@@ -7,78 +7,7 @@
    <title>Page Title</title>
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-   <style>
-      body {
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         background: #c5c2c2;
-      }
-
-      .wrapper {
-         width: 500px;
-         height: auto;
-         /* background: #00C9A7; */
-      }
-
-      ul {
-         padding: 0;
-      }
-
-      ul li {
-         list-style-type: none;
-         display: block;
-         margin: 0;
-      }
-
-      a {
-         text-decoration: none;
-         color: #fff;
-         display: block;
-         position: relative;
-         padding: 15px 10px;
-         background-image: linear-gradient(to right top, #314755, #26a0da);
-      }
-
-      a span {
-         position: absolute;
-         right: 10px;
-      }
-
-      .heading-c {
-         max-height: 0;
-         overflow: hidden;
-         background: linear-gradient(to bottom, #02AAB0 0%, #00CDAC 100%);
-         color: #fff;
-         font-weight: bold;
-         word-spacing: 3px;
-         letter-spacing: 1px;
-      }
-
-      .active {
-         padding-top: 30px;
-         padding-bottom: 30px;
-         max-height: 1000px;
-         transition: all 1s ease;
-      }
-
-      .deactive {
-         padding-top: 0;
-         padding-bottom: 0px;
-         max-height: 0;
-         transition: all 1s ease;
-      }
-
-      .rotate180 {
-         transform: rotate(180deg);
-         transition: all 0.5s;
-      }
-
-      .rotate0 {
-         transform: rotate(0deg);
-         transition: all 0.5s;
-      }
-   </style>
+   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -135,54 +64,6 @@
       </ul>
    </div>
 </body>
+<script src="main.js"></script>
 
 </html>
-<script>
-
-   let elements = document.getElementsByTagName('a');
-   for (let element of elements) {
-      element.addEventListener('click', function (e) {
-         e.preventDefault();
-         data_item = element.getAttribute('data-item');
-         let contents = document.querySelectorAll(`div[data-show='${data_item}'`);
-         let item=this.lastElementChild;
-         remove(data_item);
-         contents.forEach(content => {
-            if (!content.classList.contains('active')) {
-               content.classList.add('active');
-               content.classList.remove('deactive');
-               item.classList.add('rotate180');
-               item.classList.remove('rotate0');
-            }
-            else {
-               content.classList.add('deactive');
-               content.classList.remove('active');
-               item.classList.remove('rotate180');
-               item.classList.add('rotate0');
-            }
-         })
-      });
-   }
-
-   function remove(data) {
-      let activeEl = document.querySelectorAll(`div[data-show]:not([data-show='${data}'])`);
-      activeEl.forEach(el => {
-         if (el.classList.contains('active')) {
-            el.classList.remove('active');
-            el.classList.add('deactive');
-         }
-      })
-
-      let activeIcons = document.querySelectorAll(`span[data-item]:not([data-item='${data}'])`);
-      activeIcons.forEach(icon => {
-         if (icon.classList.contains('rotate180')) {
-            icon.classList.remove('rotate180');
-            icon.classList.add('rotate0');
-         }
-      })
-   }
-
-
-
-
-</script>
